@@ -1,0 +1,7 @@
+import { createProxy } from '@vyke/elements'
+import { {{elements}} } from '../elements';
+
+
+export function {{name}}() {
+	return {{code}}
+}
