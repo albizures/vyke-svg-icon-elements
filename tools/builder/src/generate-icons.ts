@@ -55,8 +55,8 @@ export async function generateIcons(folder = '') {
 		rootNode.attribs = {
 			...currentAttribs,
 			...defaultAttribs,
-			width: String(icon.width),
-			height: String(icon.height),
+			width: '1em', // String(icon.width),
+			height: '1em', // String(icon.height),
 			viewBox: icon.viewBox ?? `0 0 ${icon.width} ${icon.height}`,
 			verticalAlign: icon.verticalAlign ?? 'middle',
 		}
