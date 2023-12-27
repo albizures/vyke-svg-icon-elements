@@ -1,6 +1,5 @@
-import { createProxy } from '@vyke/elements'
-import { type SvgChild, type SvgConfig, createSvgElement } from '@vyke/elements/svg'
+import { type ProxyFactory, type SvgChild, type SvgElement, elements } from '@vyke/elements/v'
 
 export const {
 	{{elements}}
-} = createProxy<SvgConfig, SvgChild>(createSvgElement)
+} = elements.svg

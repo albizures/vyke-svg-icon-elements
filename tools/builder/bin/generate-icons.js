@@ -7,7 +7,7 @@ import { generateIcons } from '../dist/index.mjs'
 
 Promise.all([
 	generateIcons(),
-	generateIcons('dom'),
+	// generateIcons('dom'),
 ]).catch((err) => {
 	console.error(err.stack)
 	process.exit(1)
