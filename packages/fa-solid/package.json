@@ -1,6 +1,6 @@
 {
 	"name": "@vyke/elements-fa-solid",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"description": "",
 	"author": "",
 	"license": "MIT",
@@ -8,10 +8,6 @@
 		".": {
 			"import": "./dist/index.mjs",
 			"require": "./dist/index.cjs"
-		},
-		"./dom": {
-			"import": "./dist/dom/index.mjs",
-			"require": "./dist/dom/index.cjs"
 		}
 	},
 	"main": "./dist/index.cjs",
