@@ -36,7 +36,7 @@
 	"dependencies": {
 		"@vyke/results": "^0.0.5",
 		"@vyke/sola": "^0.0.5",
-		"@vyke/transform-to-elements": "^0.0.7",
+		"@vyke/transform-to-elements": "^0.1.1",
 		"camelcase": "^8.0.0",
 		"fs-extra": "^11.2.0",
 		"html-dom-parser": "^5.0.6",

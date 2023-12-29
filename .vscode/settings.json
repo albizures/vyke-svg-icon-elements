@@ -33,5 +33,15 @@
 		"json",
 		"jsonc",
 		"yaml"
+	],
+	"editor.quickSuggestions": {
+		"strings": "on"
+	},
+	"tailwindCSS.includeLanguages": {
+		"typescript": "javascript"
+	},
+	"tailwindCSS.suggestions": true,
+	"tailwindCSS.experimental.classRegex": [
+		"class:\\s*['\"]([^'\"]+)"
 	]
 }

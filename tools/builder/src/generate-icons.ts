@@ -1,7 +1,7 @@
 import path from 'node:path'
 import process from 'node:process'
 import camelCase from 'camelcase'
-import { markupToNodes, nodesToElements } from '@vyke/transform-to-elements'
+import { type Attribs, markupToNodes, nodesToElements } from '@vyke/transform-to-elements'
 import { r } from '@vyke/results'
 import { Sola } from '@vyke/sola'
 import { readSvgIcon, readTemplate, writeFileInBundleSrc } from './files'
@@ -50,15 +50,18 @@ export async function generateIcons(folder = '') {
 			continue
 		}
 
-		const defaultAttribs: Attrs = { fill: 'currentColor', xmlns: 'http://www.w3.org/2000/svg' }
+		const defaultAttribs: Attribs = {
+			fill: { type: 'value', value: 'currentColor' },
+			xmlns: { type: 'value', value: 'http://www.w3.org/2000/svg' } }
 		const currentAttribs = rootNode.attribs
 		rootNode.attribs = {
 			...currentAttribs,
 			...defaultAttribs,
-			width: '1em', // String(icon.width),
-			height: '1em', // String(icon.height),
-			viewBox: icon.viewBox ?? `0 0 ${icon.width} ${icon.height}`,
-			verticalAlign: icon.verticalAlign ?? 'middle',
+			width: { type: 'value', value: '1em' },
+			height: { type: 'value', value: '1em' },
+			class: { type: 'var', name: 'className' },
+			viewBox: { type: 'value', value: icon.viewBox ?? `0 0 ${icon.width} ${icon.height}` },
+			verticalAlign: { type: 'value', value: icon.verticalAlign ?? 'middle' },
 		}
 
 		icon.pack = path.basename(baseDir)
@@ -71,10 +74,12 @@ export async function generateIcons(folder = '') {
 			elementsUsed.add(element)
 		}
 
+		// console.log(code, '<- the code')
+
 		const iconCode = iconTemplate
-			.replace(/{{name}}/g, iconName)
-			.replace(/{{code}}/g, code.join('\n\t'))
-			.replace(/{{elements}}/g, elements.join(', '))
+			.replaceAll(/{{name}}/g, iconName)
+			.replaceAll(/{{code}}/g, code.join('\n\t'))
+			.replaceAll(/{{elements}}/g, elements.join(', '))
 
 		await r.toUnwrap(writeFileInBundleSrc(path.join(folder, `icons/${icon.name}.ts`), iconCode))
 

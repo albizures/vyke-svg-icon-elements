@@ -1,6 +1,11 @@
-import type { ProxyFactory, SvgChild, SvgElement } from '@vyke/elements/v'
+import type { ProxyFactory, SvgChild, VykeElment } from '@vyke/elements/v'
 import { {{elements}} } from '../elements';
 
-export function {{name}}() {
+type {{name}}Props = {
+	class: string
+}
+
+export function {{name}}(props: {{name}}Props) {
+	const {class: className} = props
 	return {{code}}
 }
