@@ -1,4 +1,4 @@
-import type { ProxyFactory, SvgChild, VykeElment } from '@vyke/elements/v'
+import type { ProxyFactory, SvgChild, VykeElement } from '@vyke/elements/v'
 import { {{elements}} } from '../elements';
 
 type {{name}}Props = {
