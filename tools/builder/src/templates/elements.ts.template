@@ -1,4 +1,4 @@
-import { type ProxyFactory, type SvgChild, type SvgElement, elements } from '@vyke/elements/v'
+import { type ProxyFactory, type SvgChild, VykeElement, VykeRefElement, elements } from '@vyke/elements/v'
 
 export const {
 	{{elements}}

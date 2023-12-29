@@ -46,8 +46,8 @@ importers:
         specifier: ^1.87.0
         version: 1.87.0
       '@vyke/elements':
-        specifier: ^0.0.21
-        version: 0.0.21
+        specifier: ^0.0.22
+        version: 0.0.22
       '@vyke/icon-builder':
         specifier: workspace:^
         version: link:../../tools/builder
@@ -1703,8 +1703,8 @@ packages:
     resolution: {integrity: sha512-ITLYccTG63+s5UEq9v92BN23rJPwhDOu7dDmLpyilqZIYNRPQ85fLbfPJslrFggrtUwiN0ypxIKTfvf1QENF6Q==}
     dev: false
 
-  /@vyke/elements@0.0.21:
-    resolution: {integrity: sha512-uqdfpZA9q1m0vcUUf7rRm5UEXjUoV8N3H35DCrjc3aaJUU9NNS/yS423Nl9SqB6zI3cEDwW24SiiyiYXe6UdDw==}
+  /@vyke/elements@0.0.22:
+    resolution: {integrity: sha512-DAFLon4CSbqeisdxEkc2LEucQH9esisCiEdzJ2VBw7BD/YtSoIJ8yrW/bmAfBOsKqOid/rmbQzbAoFd5CpTMAw==}
     dev: true
 
   /@vyke/results@0.0.5:
