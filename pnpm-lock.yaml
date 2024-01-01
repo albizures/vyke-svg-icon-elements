@@ -112,18 +112,27 @@ importers:
 
   tools/website:
     dependencies:
+      '@maverick-js/signals':
+        specifier: ^5.11.4
+        version: 5.11.4
       '@vyke/dency':
         specifier: ^0.0.9
         version: 0.0.9
       '@vyke/elements':
-        specifier: ^0.0.20
-        version: 0.0.20
+        specifier: ^0.0.24
+        version: 0.0.24
       '@vyke/elements-fa-solid':
         specifier: workspace:*
         version: link:../../packages/fa-solid
+      '@vyke/sola':
+        specifier: ^0.0.5
+        version: 0.0.5
       copy-text-to-clipboard:
         specifier: ^3.2.0
         version: 3.2.0
+      oby:
+        specifier: ^15.1.0
+        version: 15.1.0
     devDependencies:
       autoprefixer:
         specifier: ^10.4.16
@@ -140,6 +149,9 @@ importers:
       vite:
         specifier: ^5.0.10
         version: 5.0.10(@types/node@20.10.3)
+      vitest:
+        specifier: ^1.1.0
+        version: 1.1.0(@types/node@20.10.3)
 
 packages:
 
@@ -1016,6 +1028,10 @@ packages:
       read-yaml-file: 1.1.0
     dev: false
 
+  /@maverick-js/signals@5.11.4:
+    resolution: {integrity: sha512-fkUqNfnJK1kgfsKimaLp2jcfQr7NXwHZWBhqhQ3pifnYSZrBJv+4tU/klKyGf1mA33mVBYustCAgilJppzGjig==}
+    dev: false
+
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -1699,13 +1715,13 @@ packages:
     resolution: {integrity: sha512-lrEMPX0erosaXaprZ4MZ0oj67UUQPGV2NnTLoUELrq2uhz90AGX+h1VIoVfLN+sGb89vFWE370snNscKVfnIDg==}
     dev: true
 
-  /@vyke/elements@0.0.20:
-    resolution: {integrity: sha512-ITLYccTG63+s5UEq9v92BN23rJPwhDOu7dDmLpyilqZIYNRPQ85fLbfPJslrFggrtUwiN0ypxIKTfvf1QENF6Q==}
-    dev: false
-
   /@vyke/elements@0.0.22:
     resolution: {integrity: sha512-DAFLon4CSbqeisdxEkc2LEucQH9esisCiEdzJ2VBw7BD/YtSoIJ8yrW/bmAfBOsKqOid/rmbQzbAoFd5CpTMAw==}
     dev: true
+
+  /@vyke/elements@0.0.24:
+    resolution: {integrity: sha512-IWkxxvgB2569iQydQ8fYKtTIf/CQx9oPxs15H2Hh7yeMuahTsdvvS/HHSWuf/9AU6RuYZclLXyXo16ITlhENAA==}
+    dev: false
 
   /@vyke/results@0.0.5:
     resolution: {integrity: sha512-Ug76jOWvYofttvYhk+Y25LZItD5ImiEclrXCcDCQEVFt+nr3HA1cXGZGzf1MuYNhz72ghX0AdDykXPKW+NmCfw==}
@@ -4897,6 +4913,10 @@ packages:
       has-symbols: 1.0.3
       object-keys: 1.1.1
 
+  /oby@15.1.0:
+    resolution: {integrity: sha512-2ybzrWvIXev6fvVoa0LWP/Kzul6ba8O9s20y9FMmnyoQbo59hckcc2kDmGFPaPfl97IOLL6osC3Q/ceGEHYA0g==}
+    dev: false
+
   /once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
     dependencies:
@@ -6801,7 +6821,7 @@ packages:
       strip-literal: 1.3.0
       tinybench: 2.5.1
       tinypool: 0.8.1
-      vite: 5.0.5(@types/node@20.10.3)
+      vite: 5.0.10(@types/node@20.10.3)
       vite-node: 1.1.0(@types/node@20.10.3)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:

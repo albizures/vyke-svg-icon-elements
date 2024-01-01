@@ -5,7 +5,7 @@ import { type Attribs, markupToNodes, nodesToElements } from '@vyke/transform-to
 import { r } from '@vyke/results'
 import { Sola } from '@vyke/sola'
 import { readSvgIcon, readTemplate, writeFileInBundleSrc } from './files'
-import { type Attrs, readManifest } from './manifest'
+import { readManifest } from './manifest'
 
 const sola = new Sola({ tag: 'vyke:svg-icon-elements' })
 
@@ -16,7 +16,7 @@ type Icon = {
 	file: string
 }
 
-export async function generateIcons(folder = '') {
+export async function generateIcons() {
 	const packModuleName = process.argv[2]!
 	const icons = await r.toExpect(readManifest(packModuleName), 'Error reading manifest')
 
@@ -81,7 +81,7 @@ export async function generateIcons(folder = '') {
 			.replaceAll(/{{code}}/g, code.join('\n\t'))
 			.replaceAll(/{{elements}}/g, elements.join(', '))
 
-		await r.toUnwrap(writeFileInBundleSrc(path.join(folder, `icons/${icon.name}.ts`), iconCode))
+		await r.toUnwrap(writeFileInBundleSrc(`icons/${icon.name}.ts`, iconCode))
 
 		allIcons.push({
 			name: iconName,
@@ -91,28 +91,24 @@ export async function generateIcons(folder = '') {
 		sola.log(`${iconName} created`)
 	}
 
-	await r.toUnwrap(writeElementsFile([...elementsUsed], folder))
-	await r.toUnwrap(writeIndexFile(allIcons, folder))
+	await r.toUnwrap(writeElementsFile([...elementsUsed]))
+	await r.toUnwrap(writeIndexFile(allIcons))
 
 	sola.log(`${totalIcons} icons generated!`)
 }
 
-async function writeElementsFile(elements: Array<string>, folder: string) {
-	const template = folder === 'dom'
-		? 'dom-elements.ts.template'
-		: 'elements.ts.template'
-
-	const elementsTemplate = await r.toExpect(readTemplate(template), 'error getting elements template')
+async function writeElementsFile(elements: Array<string>) {
+	const elementsTemplate = await r.toExpect(readTemplate('elements.ts.template'), 'error getting elements template')
 
 	const elementsCode = elementsTemplate.replace(/{{elements}}/g, elements.sort().join(',\n\t'))
 
-	return writeFileInBundleSrc(path.join(folder, 'elements.ts'), elementsCode)
+	return writeFileInBundleSrc('elements.ts', elementsCode)
 }
 
-async function writeIndexFile(icons: Array<Icon>, folder: string) {
+async function writeIndexFile(icons: Array<Icon>) {
 	const code = icons.map((icon) => {
 		return `export { ${icon.name}} from './icons/${icon.file}'`
 	}).join('\n')
 
-	return writeFileInBundleSrc(path.join(folder, 'index.ts'), code)
+	return writeFileInBundleSrc('index.ts', code)
 }

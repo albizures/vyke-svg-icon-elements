@@ -5,7 +5,7 @@ type {{name}}Props = {
 	class: string
 }
 
-export function {{name}}(props: {{name}}Props) {
-	const {class: className} = props
+export function {{name}}(props?: {{name}}Props) {
+	const {class: className} = props ?? {}
 	return {{code}}
 }
