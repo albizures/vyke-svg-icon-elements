@@ -6,6 +6,7 @@ export const {
 	li,
 	span,
 	dialog,
+	h1,
 	h3,
 	p,
 	form,

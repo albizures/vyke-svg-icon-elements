@@ -42,6 +42,7 @@
 	},
 	"tailwindCSS.suggestions": true,
 	"tailwindCSS.experimental.classRegex": [
-		"class:\\s*['\"]([^'\"]+)"
+		"class:\\s*['\"]([^'\"]+)",
+		"className\\s*=\\s*['\"]([^'\"]+)"
 	]
 }

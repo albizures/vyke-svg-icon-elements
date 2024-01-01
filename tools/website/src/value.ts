@@ -12,22 +12,21 @@ export type Val<T> = ReadVal<T> & {
 
 export function createVal<T>(defaultValue: T): Val<T> {
 	let current = defaultValue
-	let listeners: Array<Listener<any>> = []
+	const listeners = new Set<Listener<any>>()
 
 	const val = {
 		notify() {
-			listeners = listeners.filter((listener) => {
-				const temp = listener(current)
-				return temp !== false
-			})
+			for (const listener of listeners) {
+				if (listener(current) === false) {
+					listeners.delete(listener)
+				}
+			}
 		},
 		subscribe<T>(listener: Listener<T>) {
-			listeners.push(listener)
+			listeners.add(listener)
 
 			return () => {
-				listeners = listeners.filter((item) => {
-					return item !== listener
-				})
+				listeners.delete(listener)
 			}
 		},
 		get() {
@@ -115,14 +114,7 @@ export function subscribe<TVals extends Array<ReadVal<any>>>(
 	return unsubscribe
 }
 
-// type BatchValue<T> = [Val<T>, T]
-
-// export function bathSet<TValues extends Array<BatchValue<any>>>(values: TValues) {
-// 	for (const [val, value] of values) {
-// 		val.set(value, false)
-// 	}
-
-// 	for (const [val] of values) {
-// 		val.notify()
-// 	}
-// }
+export function isValueNonNullable<TValue>(val: ReadVal<TValue>): val is ReadVal<NonNullable<TValue>> {
+	const value = val.get()
+	return !(value === undefined || value === null)
+}
