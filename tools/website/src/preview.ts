@@ -71,7 +71,7 @@ export const Preview = createComponent((props: PreviewProps) => {
 			),
 			div({ class: 'flex-1 overflow-hidden flex flex-col items-center' },
 				h3({ $ref: titleRef, class: 'text-center text-xl' }, iconName),
-				ul({ class: 'm-4 space-y-2' },
+				ul({ class: 'm-4 space-y-2 w-full' },
 					li({ },
 						CopyButton({
 							label: importIconVal,
@@ -115,7 +115,7 @@ function CopyButton(props: CopyButtonProps) {
 		onCopy()
 	}
 
-	return button({ class: 'transition-all whitespace-nowrap overflow-scroll bg-base-200 border rounded py-0.5 px-1', onclick: onClick },
+	return button({ class: 'w-full transition-all whitespace-nowrap overflow-scroll bg-base-200 border rounded py-0.5 px-1', onclick: onClick },
 		Clipboard({ class: 'inline-block align-text-bottom mr-1' }),
 		span({ $ref: labelRef }, labelVal.get()),
 	)
