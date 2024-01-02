@@ -16,7 +16,8 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "unbuild",
+		"build": "run-s clean-up generate unbuild",
+		"build:only": "unbuild",
 		"clean-up": "clean-up",
 		"generate:icons": "generate-icons @svg-icons/fa-solid",
 		"generate": "run-s clean-up generate:icons",
