@@ -2,7 +2,7 @@ import type { ProxyFactory, SvgChild, VykeElement } from '@vyke/elements/v'
 import { {{elements}} } from '../elements';
 
 type {{name}}Props = {
-	class: string
+	class?: string
 }
 
 export function {{name}}(props?: {{name}}Props) {
